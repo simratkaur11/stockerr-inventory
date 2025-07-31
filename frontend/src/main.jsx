@@ -16,6 +16,8 @@ import LoginScreen from './screens/LoginScreen.jsx';
 import RegisterScreen from './screens/RegisterScreen.jsx';
 import ProfileScreen from './screens/ProfileScreen.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import Dashboard from './screens/Dashboard.jsx';
+import { AuthProvider } from './context/AuthContext';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +27,7 @@ const router = createBrowserRouter(
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
+        <Route path='/dashboard' element={<Dashboard />} />
       </Route>
     </Route>
   )
@@ -32,8 +35,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
+    <AuthProvider>
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
+    </AuthProvider>
   </Provider>
 );

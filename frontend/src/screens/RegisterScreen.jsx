@@ -24,7 +24,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/');
+      navigate('/dashboard');
     }
   }, [navigate, userInfo]);
 
@@ -37,7 +37,8 @@ const RegisterScreen = () => {
       try {
         const res = await register({ name, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
-        navigate('/');
+         localStorage.setItem('userInfo', JSON.stringify(res));
+        navigate('/dashboard');
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
