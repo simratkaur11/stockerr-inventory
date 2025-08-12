@@ -69,7 +69,7 @@ const app = express();
 // Allowed origins: add your Vercel URL here
 const allowedOrigins = [
   'http://localhost:3000',
-  process.env.FRONTEND_URL || 'https://stockerr-inventory.vercel.app/' // replace with real Vercel URL
+  process.env.FRONTEND_URL || 'https://stockerr-inventory.vercel.app' // replace with real Vercel URL
 ];
 
 app.use(cors({
